@@ -64,59 +64,59 @@ COMBINATIONS = [
 ]
 
 
-def execute():
+    def execute():
 
-    # begining of original input code
-    # open the input to take in a command 
-    user_command = input(">")
+        # begining of original input code
+        # open the input to take in a command 
+        user_command = input(">")
 
 
-    # perform the action
-    if user_command.startswith("view-info:"):
-        current_song = str(re.findall("view-info:(.+)", user_command))
+        # perform the action
+        if user_command.startswith("view-info:"):
+            current_song = str(re.findall("view-info:(.+)", user_command))
 
-        # remove any uncessary characters from the string
-        current_song = current_song.replace("[", "")
-        current_song = current_song.replace("'", "")
-        current_song = current_song.replace("]", "")
-        current_song = current_song + ".mp3"
+            # remove any uncessary characters from the string
+            current_song = current_song.replace("[", "")
+            current_song = current_song.replace("'", "")
+            current_song = current_song.replace("]", "")
+            current_song = current_song + ".mp3"
 
-        # run the function
-        view_info(user_library[current_song])
+            # run the function
+            view_info(user_library[current_song])
 
-        # exit the program
-    elif user_command.startswith("quit"):
-        exit()
+            # exit the program
+        elif user_command.startswith("quit"):
+            exit()
 
-        # play the song
-    elif user_command.startswith("play:"):
-        current_song = str(re.findall("play:(.+)", user_command))
+            # play the song
+        elif user_command.startswith("play:"):
+            current_song = str(re.findall("play:(.+)", user_command))
 
-        current_song = current_song.replace("[", "")
-        current_song = current_song.replace("'", "")
-        current_song = current_song.replace("]", "")
-        current_song = current_song + ".mp3"
+            current_song = current_song.replace("[", "")
+            current_song = current_song.replace("'", "")
+            current_song = current_song.replace("]", "")
+            current_song = current_song + ".mp3"
 
-        for key, value in user_library.items():
-            if key == current_song:
-                playsound(key, False)
+            for key, value in user_library.items():
+                if key == current_song:
+                    playsound(key, False)
 
-    else:
-        print("Invalid choice")
+        else:
+            print("Invalid choice")
 
-    # end of original input code    
+        # end of original input code    
 
-current = set()
+    current = set()
 
-def on_press(key):
-    if any([key in COMBO for COMBO in COMBINATIONS]):
-        current.add(key)
-        if any(all(k in current for k in COMBO) for COMBO in COMBINATIONS):
-            execute()
+    def on_press(key):
+        if any([key in COMBO for COMBO in COMBINATIONS]):
+            current.add(key)
+            if any(all(k in current for k in COMBO) for COMBO in COMBINATIONS):
+                execute()
 
-def on_release(key):
-    if any([key in COMBO for COMBO in COMBINATIONS]):
-        current.remove(key)
+    def on_release(key):
+        if any([key in COMBO for COMBO in COMBINATIONS]):
+            current.remove(key)
 
-with keyboard.Listener(on_press=on_press, on_release=on_release) as listener:
-    listener.join()        
+    with keyboard.Listener(on_press=on_press, on_release=on_release) as listener:
+        listener.join()        
