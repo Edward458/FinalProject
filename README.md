@@ -27,7 +27,7 @@ This program is a terminal based mp3 player. User must place all the songs in a 
 
 
 # Citated Code
-- Title: How to Make Hotkeys in Python
+    - Title: How to Make Hotkeys in Python
 - Author: https://nitratine.net
 - Date: January 18, 2018
 
