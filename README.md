@@ -1,4 +1,4 @@
-# FinalProject
+# Terminal MP3 Player
 Edward Mesa
 
 # Program Description
